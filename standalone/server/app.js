@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015 Red Hat, Inc.
+//  Copyright (c) 2017 Red Hat, Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -16,4 +16,15 @@
 
 'use strict';
 
-console.log("Hello World!");
+const PORT = 9000;
+const server = require('express')();
+
+server.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+
+server.listen(PORT, function () {
+    console.log('Server is up and listening on port', PORT, '\n');
+});
+
+module.exports = server; // for tests

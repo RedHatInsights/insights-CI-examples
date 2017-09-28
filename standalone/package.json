@@ -4,7 +4,7 @@
   "description": "Sample project",
   "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "node server/app.js"
   },
   "repository": {
@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/RedHatInsights/insights-build-demo/issues"
   },
-  "homepage": "https://github.com/RedHatInsights/insights-build-demo"
+  "homepage": "https://github.com/RedHatInsights/insights-build-demo",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^4.15.5"
+  }
 }
