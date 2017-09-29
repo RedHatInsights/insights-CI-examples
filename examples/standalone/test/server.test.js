@@ -16,11 +16,11 @@
 
 'use strict';
 
-let chai = require('chai');
+const chai = require('chai');
 chai.use(require('chai-http'));
-let should = chai.should();
+const should = chai.should();
 
-let server = require('../server/app');
+const server = require('../server/app');
 
 describe('App', function () {
     it('should respond to GET / with 200', function (done) {
