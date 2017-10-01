@@ -1,6 +1,6 @@
 npm-debug.log*
 .nyc_output
-bower_components
+bower_components/
 node_modules/
 .npm
 .env

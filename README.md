@@ -13,6 +13,9 @@ Source-to-image (S2I) builds are one example of this approach.
 Insights supports scanning local images by specified id as well as scanning
 from within a running container and easily integrates into either type of build.
 
+The results of an Insights scan on an image or container are returned immediately
+and are not stored by Red Hat - they will not show up on http://access.redhat.com/insights
+
 ## Installing the Insights Client
 To install the insights client you will need a properly entitled Red Hat Network (RHN) 
 subscription and a registered Red Hat Enterprise Linux (rhel) system.
@@ -22,39 +25,46 @@ If you are installing the client on a build machine then that machine should be 
 If you are installing the client inside a builder image then you have two options:
 
 - Register the image itself, then install the client, then unregister the system (be careful
-about publishing an image containing registration credentials!)
+about publishing a registered image: it will contain your registration credentials!)
 
-- The rhel 7 base image will inherit the RHSM credentials of its host (<links!>), so you 
-can just build your builder image on a registered system.
+- The rhel 7 base image will inherit the RHN credentials of its host, so you
+can just build your builder image on a registered system.  For example: if you run rhel 7
+on your laptop, and your laptop is registered, a container running a rhel 7 image will
+inherit your laptop's registration and can yum install any software your laptop is
+entitled to.
 
 In either case, install the client by:
 
 ```
-# yum --enablerepo=rhel-7-server-insights-3-rpms install insights-client
+# yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client
 ```
 
 ## Configuring the Insights Client
 For either style of build the client requires proper credentials to scan an image.  
 
-If the client is installed on a registered system it will use the RHSM credentials by 
+If the client is installed on a registered system it will use the RHN credentials by
 default.
 
-In the builder image case you will need to provide basic auth credentials either by
-storing them in /etc/insight-client/insights.conf (<check>) or, preferably, through environment
-variables (<get vars from Richard>)
+In the builder image case you will need to provide basic authentication credentials through
+the INSIGHTS_USERNAME and INSIGHTS_PASSWORD environment variables.  You can alternately
+supply credentials in /etc/insight-client/insights.conf.
 
 ## Running the Insights Client
-You will likely want to include Insights scanning
-as part of other testing performed on the image.  Simply install the Insights client 
-alongside your other test tools and run a scan as part of your test suite.
+To scan an image, use the --analyze-container option.  Pass the id of the image to scan
+a particular image or omit it if running the client within a container.
 
-For the external case:
-For builder images:
-< get the magic flags from Richard and document those here>
+External case:
+```
+$ insights-client --analyze-container=4a974767fba6
+```
+
+Insights client inside container:
+```
+$ insights-client --analyze-container
+```
 
 ## Interpreting the Results
-- document json format?
+The client will return the results of the scan in the following format.  Results are not saved by Red Hat and will 
+not be available at http://access.redhat.com/insights
 
-- for rhel systems only
-- mention that the results are not stored online
 
