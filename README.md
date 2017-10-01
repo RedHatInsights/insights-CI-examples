@@ -67,4 +67,32 @@ $ insights-client --analyze-container
 The client will return the results of the scan in the following format.  Results are not saved by Red Hat and will 
 not be available at http://access.redhat.com/insights
 
+{
+“version”: “1.1”,
+  “system”: {},
+  “reports”: {
+    “rule_id”: {
+“rule_data”: {},
+“title”: {
+        “plain”: “”,
+        “html”: “”
+      },
+      “summary”: {},
+      “description”: {},
+      “details”: {},
+      “reference”: {},
+      “resolution”: {},
+      “severity”: “”,
+      “category”: “”,
+      “impact”: “”,
+      “likelihood”: “”,
+      “reboot_required”: “”,
+      “acknowledged”: false,
+    }, ...
+  },
+“upload”: {
+“engine_rule_count”: …,
+...
+}
+}
 
