@@ -2,7 +2,8 @@
 FROM registry.access.redhat.com/rhel
 
 # install insights client
-RUN yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client ; \
+#RUN yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client ; \
+RUN yum install -y http://insights-api.usersys.redhat.com/repo/insights-client-3.0.0-0.fc26.noarch.rpm ; \
     yum clean all
 
 # install node
@@ -16,10 +17,15 @@ RUN yum install -y \
 RUN su -c 'npm install -g gulp-cli'
 
 # setup build account
-RUN adduser build
+WORKDIR /home/build
 
-ENV HOME = /home/build
-ENV APP_ROOT = $HOME/app
-WORKDIR $HOME
+COPY . .
+
+RUN useradd build --home-dir /home/build ; \
+    chown -R build:build /home/build
 
 USER build
+
+RUN npm install
+
+CMD npm start
