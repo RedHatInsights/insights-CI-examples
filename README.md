@@ -56,4 +56,5 @@ For builder images:
 - document json format?
 
 - for rhel systems only
+- mention that the results are not stored online
 
