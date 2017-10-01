@@ -34,7 +34,6 @@ inherit your laptop's registration and can yum install any software your laptop 
 entitled to.
 
 In either case, install the client by:
-
 ```
 # yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client
 ```
@@ -67,32 +66,33 @@ $ insights-client --analyze-container
 The client will return the results of the scan in the following format.  Results are not saved by Red Hat and will 
 not be available at http://access.redhat.com/insights
 
-{
-“version”: “1.1”,
-  “system”: {},
-  “reports”: {
-    “rule_id”: {
-“rule_data”: {},
-“title”: {
-        “plain”: “”,
-        “html”: “”
-      },
-      “summary”: {},
-      “description”: {},
-      “details”: {},
-      “reference”: {},
-      “resolution”: {},
-      “severity”: “”,
-      “category”: “”,
-      “impact”: “”,
-      “likelihood”: “”,
-      “reboot_required”: “”,
-      “acknowledged”: false,
-    }, ...
-  },
-“upload”: {
-“engine_rule_count”: …,
-...
-}
-}
+Client JSON response:
 
+```
+{
+  "version": "1.3",
+  "system": {},
+  "reports": {
+    "rule_id": {
+      "rule_data": {},
+      "title": {
+        "plain": "plain text title",
+        "html": "<p>html format title<p/>"
+      },
+      "summary": {},
+      "description": {},
+      "details": {},
+      "reference": {},
+      "resolution": {},
+      "severity": "INFO",
+      "category": "Security",
+      "impact": "1",
+      "likelihood": "1",
+      "reboot_required": false,
+      "acknowledged": false
+    }
+  },
+  "upload": {
+  }
+}
+```

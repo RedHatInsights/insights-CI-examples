@@ -2,7 +2,7 @@
 FROM registry.access.redhat.com/rhel
 
 # install insights client
-RUN yum install -y http://insights-api.usersys.redhat.com/repo/insights-client-3.0.0-0.fc26.noarch.rpm ; \
+RUN yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client ; \
     yum clean all
 
 # install node
