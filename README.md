@@ -63,8 +63,8 @@ $ insights-client --analyze-container
 ```
 
 ## Interpreting the Results
-The client will return the results of the scan in the following format.  Results are not saved by Red Hat and will 
-not be available at http://access.redhat.com/insights
+The client will write the results of the scan to stdout in the following format.  Results are not saved by Red Hat 
+and will not be available at http://access.redhat.com/insights
 
 Client JSON response:
 
@@ -76,7 +76,7 @@ Client JSON response:
     "rule_id": {
       "rule_data": {},
       "title": {
-        "plain": "plain text title",
+        "plain": "markdown format title",
         "html": "<p>html format title<p/>"
       },
       "summary": {},
