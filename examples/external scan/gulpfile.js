@@ -6,20 +6,11 @@ var gulp = require('gulp');
 var util = require('gulp-util');
 var execSync = require('child_process').execSync;
 var wrap = require('linewrap')(4, 120);
-var mocha = require('gulp-mocha');
-
-// run mocha tests
-gulp.task('mocha', function() {
-    return gulp.src(['test/*.test.js'], { read: false })
-    .pipe(mocha({
-        reporter: 'spec'
-    }));
-});
 
 // run Insights scan
-gulp.task('insights', ['mocha'], function (done) {
+gulp.task('insights', function (done) {
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container';
+    const insightsCommand = 'insights-client --analyze-container=example';
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     var found = 0;
@@ -72,7 +63,7 @@ gulp.task('insights', ['mocha'], function (done) {
 // test task that outputs insights scan results in xunit format
 gulp.task('insights:xunit', function () {
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container'; // TODO: scan the image we just built
+    const insightsCommand = 'insights-client --analyze-container=example';
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     // If you want to ignore a particular test, add its id to .insightsignore

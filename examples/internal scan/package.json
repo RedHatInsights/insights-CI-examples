@@ -4,7 +4,7 @@
   "description": "Sample project",
   "main": "server/app.js",
   "scripts": {
-    "test": "mocha --timeout 10000",
+    "test": "gulp test",
     "start": "node server/app.js"
   },
   "repository": {

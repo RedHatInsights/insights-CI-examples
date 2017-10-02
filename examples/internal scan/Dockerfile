@@ -2,8 +2,7 @@
 FROM registry.access.redhat.com/rhel
 
 # install insights client
-#RUN yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client ; \
-RUN yum install -y http://insights-api.usersys.redhat.com/repo/insights-client-3.0.0-0.fc26.noarch.rpm ; \
+RUN yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client ; \
     yum clean all
 
 # install node
@@ -21,11 +20,12 @@ WORKDIR /home/build
 
 COPY . .
 
-RUN useradd build --home-dir /home/build ; \
-    chown -R build:build /home/build
+# we have to run as root for the moment because of a python ACL bug...
+#RUN useradd build --home-dir /home/build --groups insights ; \
+#    chown -R build:build /home/build
+#
+#USER build
 
-USER build
-
-RUN npm install
+RUN su -c 'npm install'
 
 CMD npm start

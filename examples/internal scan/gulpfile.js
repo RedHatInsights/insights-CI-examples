@@ -17,7 +17,7 @@ gulp.task('mocha', function() {
 });
 
 // run Insights scan
-gulp.task('insights', ['mocha'], function (done) {
+gulp.task('insights', function (done) {
     // run insights scan and collect output
     const insightsCommand = 'insights-client --analyze-container';
     const results = JSON.parse(execSync(insightsCommand).toString());
