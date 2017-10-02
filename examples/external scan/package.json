@@ -1,0 +1,32 @@
+{
+  "name": "insights-build-demo",
+  "version": "1.0.0",
+  "description": "Sample project",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "mocha --timeout 10000",
+    "start": "node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedHatInsights/insights-build-demo.git"
+  },
+  "author": "Rex White",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/insights-build-demo/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/insights-build-demo",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^4.3.1",
+    "gulp-util": "^3.0.8",
+    "linewrap": "^0.2.1",
+    "mocha": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^4.15.5"
+  }
+}

@@ -67,11 +67,12 @@ gulp.task('insights', ['mocha'], function (done) {
     done((found ? -1 : 0));
 });
 
+// TODO: add task to build image
 
 // test task that outputs insights scan results in xunit format
 gulp.task('insights:xunit', function () {
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container';
+    const insightsCommand = 'insights-client --analyze-container'; // TODO: scan the image we just built
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     // If you want to ignore a particular test, add its id to .insightsignore
