@@ -1,5 +1,6 @@
 This repository contains information to help you integrate Insights docker-format image 
-scanning into a build or CI/CD pipeline.  See the examples directory for sample code.
+scanning into a build or CI/CD pipeline.  See the README files in each examples for more
+information.  Generally, the insights integration code is in the associated gulpfiles.
 
 
 ## Introduction

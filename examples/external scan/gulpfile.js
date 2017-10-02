@@ -7,10 +7,19 @@ var util = require('gulp-util');
 var execSync = require('child_process').execSync;
 var wrap = require('linewrap')(4, 120);
 
+
+// TODO: add task to build image
+gulp.task('build', function () {
+    var imageID = execSync('docker build --quiet --tag example .').toString();
+    console.log('built image:', imageID);
+});
+
 // run Insights scan
 gulp.task('insights', function (done) {
+    // find image id
+    var imageID = execSync('docker images example --quiet').toString();
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container=example';
+    const insightsCommand = 'insights-client --analyze-container=' + imageID;
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     var found = 0;
@@ -58,12 +67,12 @@ gulp.task('insights', function (done) {
     done((found ? -1 : 0));
 });
 
-// TODO: add task to build image
 
 // test task that outputs insights scan results in xunit format
 gulp.task('insights:xunit', function () {
+    var imageID = execSync('docker images example --quiet').toString();
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container=example';
+    const insightsCommand = 'insights-client --analyze-container=' + imageID;
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     // If you want to ignore a particular test, add its id to .insightsignore
