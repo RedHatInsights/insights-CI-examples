@@ -34,10 +34,8 @@ on your laptop, and your laptop is registered, a container running a rhel 7 imag
 inherit your laptop's registration and can yum install any software your laptop is
 entitled to.
 
-In either case, install the client by:
-```
-# yum -y --enablerepo=rhel-7-server-insights-3-rpms install insights-client
-```
+Go to the following knowledgebase solution for instructions on installing the Insights Client:
+https://access.redhat.com/solutions/3200492
 
 ## Configuring the Insights Client
 For either style of build the client requires proper credentials to scan an image.  
