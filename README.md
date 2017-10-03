@@ -50,12 +50,12 @@ the INSIGHTS_USERNAME and INSIGHTS_PASSWORD environment variables.  You can alte
 supply credentials in /etc/insight-client/insights.conf.
 
 ## Running the Insights Client
-To scan an image, use the --analyze-container option.  Pass the id of the image to scan
+To scan an image, use the --analyze-image-id option.  Pass the id of the image to scan
 a particular image or omit it if running the client within a container.
 
 External case:
 ```
-$ insights-client --analyze-container=4a974767fba6
+$ insights-client --analyze-image-id=4a974767fba6
 ```
 
 Insights client inside container:
