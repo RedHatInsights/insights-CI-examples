@@ -19,7 +19,7 @@ gulp.task('insights', function (done) {
     // find image id
     var imageID = execSync('docker images example --quiet').toString();
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container=' + imageID;
+    const insightsCommand = 'insights-client --analyze-image-id=' + imageID;
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     var found = 0;
@@ -72,7 +72,7 @@ gulp.task('insights', function (done) {
 gulp.task('insights:xunit', function () {
     var imageID = execSync('docker images example --quiet').toString();
     // run insights scan and collect output
-    const insightsCommand = 'insights-client --analyze-container=' + imageID;
+    const insightsCommand = 'insights-client --analyze-image-id=' + imageID;
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     // If you want to ignore a particular test, add its id to .insightsignore
