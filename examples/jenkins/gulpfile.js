@@ -22,12 +22,15 @@ gulp.task('insights:xunit', function () {
     const results = JSON.parse(execSync(insightsCommand).toString());
 
     // If you want to ignore a particular test, add its id to .insightsignore
-    var ignore;
+    var ignore_rule = [];
+    var ignore_sev = [];
     try {
-        ignore = fs.readFileSync('/etc/insights-client/.insightsignore').toString().replace(/"|'/g, '').split("\n");
+        var ignore = JSON.parse(fs.readFileSync('.insightsignore').toString());
+        ignore_rule = ignore.ignore_rule;
+        ignore_sev = ignore.ignore_severity;
     } catch (err) {
         // file DNE
-        ignore = [];
+        // ignore = [];
     }
 
     var summary = {
@@ -45,7 +48,8 @@ gulp.task('insights:xunit', function () {
         summary.tests++;
 
         // ignore rules in .insightsignore
-        if (ignore.indexOf(id) != -1) {
+        if (ignore_rule.indexOf(id) != -1 ||
+            ignore_sev.indexOf(report.severity) != -1 ) {
             summary.ignored++;
         }
 

@@ -1,1 +1,9 @@
-other_linux_system|OTHER_LINUX_SYSTEM
+{
+    "ignore_rule": [
+    ],
+    "ignore_severity": [
+        "INFO",
+        "WARN",
+        "ERROR"
+    ]
+}
