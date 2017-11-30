@@ -61,6 +61,7 @@ gulp.task('insights:xunit', function () {
         else {
             var test = '<testcase id="' + id + '" name="' + stripHTML(report.title.plain) + '" time="0.0">\n';
             test += '<failure message="' + stripHTML(report.summary.plain) +'" type="'+report.severity+'">\n';
+            test += id + '\n\n';
             test += 'Description: ' + stripHTML(report.description.plain) + '\n\n';
             test += 'Details: ' + stripHTML(report.details.plain) + '\n\n';
             test += 'Resolution: ' + stripHTML(report.resolution.plain) + '\n';
