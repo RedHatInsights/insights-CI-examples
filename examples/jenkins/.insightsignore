@@ -2,8 +2,5 @@
     "ignore_rule": [
     ],
     "ignore_severity": [
-        "INFO",
-        "WARN",
-        "ERROR"
     ]
 }
