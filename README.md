@@ -95,3 +95,6 @@ Client JSON response:
   }
 }
 ```
+
+## Using Insights CI/CD with Jenkins [Example]
+We've provided an example implementation of using Insights' CICD capabilities within your Jenkins pipeline. Our example code is available under the examples directory of this project (https://github.com/RedHatInsights/insights-CI-examples/tree/master/examples/jenkins). We will be publishing a blog in the future providing a walk through of this functionality.
